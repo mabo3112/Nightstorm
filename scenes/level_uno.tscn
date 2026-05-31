@@ -51,6 +51,10 @@ size = Vector3(10.246704, 0.905323, 11.963623)
 [sub_resource type="BoxMesh" id="BoxMesh_ssnma"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ssnma"]
+size = Vector3(13.274719, 2.0733643, 25.108871)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wuglw"]
+size = Vector3(6.3674316, 1.4616699, 5.963867)
 
 [node name="LevelUno" type="Node3D" unique_id=549033373]
 script = ExtResource("1_xnny5")
@@ -71,27 +75,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 
 [node name="Skeleton3D" parent="Player/skeleton_mage/Rig" parent_id_path=PackedInt32Array(1529040753, 1260624539, 640963311) index="0" unique_id=278001073]
-bones/1/position = Vector3(0, 0.3905617, 0)
-bones/4/rotation = Quaternion(-0.55942076, -0.060485616, -0.64325196, 0.51924646)
-bones/5/rotation = Quaternion(2.5427502e-08, -4.1658527e-08, -0.4967729, 0.8678807)
-bones/7/rotation = Quaternion(-0.32119837, -0.32644638, 0.14640723, 0.87682915)
-bones/8/rotation = Quaternion(9.844022e-05, 9.8438104e-05, -0.70674545, 0.707468)
-bones/9/rotation = Quaternion(-0.6177573, 0.08038498, 0.6174354, 0.48029956)
-bones/10/rotation = Quaternion(3.2919026e-08, 5.0990252e-08, 0.51989615, 0.8542295)
-bones/12/rotation = Quaternion(-0.31946597, 0.3015742, -0.22797224, 0.86892074)
-bones/13/rotation = Quaternion(0.0002764745, 0.00032564334, 0.7068202, 0.7073932)
-bones/15/rotation = Quaternion(0.99358195, 0.08352307, 0.07404396, 0.018339928)
-bones/16/rotation = Quaternion(0.21487394, 6.560583e-08, -1.4279789e-07, 0.97664183)
-bones/17/rotation = Quaternion(-0.5275829, -0.20892611, 0.046574768, 0.82209307)
-bones/18/rotation = Quaternion(8.486875e-05, 0.9202336, -0.3913694, -1.9153496e-05)
-bones/19/rotation = Quaternion(0.996978, -0.029750075, 0.031387694, 0.06453568)
-bones/20/rotation = Quaternion(0.28812012, -6.402211e-08, 2.0033409e-07, 0.95759434)
-bones/21/rotation = Quaternion(-0.5665405, 0.11441991, -0.009799757, 0.8159927)
-bones/38/position = Vector3(0.52084064, 0.78730154, -0.05763735)
-bones/40/position = Vector3(-0.5108437, 0.7873015, 0.059736922)
+bones/1/position = Vector3(0, 0.3893064, 0)
+bones/4/rotation = Quaternion(-0.5576793, -0.06212827, -0.64972913, 0.51282156)
+bones/5/rotation = Quaternion(1.9376865e-08, -4.849171e-08, -0.4851185, 0.8744484)
+bones/7/rotation = Quaternion(-0.31926873, -0.3255891, 0.14064232, 0.8787941)
+bones/8/rotation = Quaternion(0.00079514063, 0.0007951125, -0.7041819, 0.71001875)
+bones/9/rotation = Quaternion(-0.6164524, 0.08200512, 0.62312305, 0.47431993)
+bones/10/rotation = Quaternion(2.023469e-08, 5.5993517e-08, 0.50877476, 0.8608997)
+bones/12/rotation = Quaternion(-0.3175579, 0.30022445, -0.22224164, 0.8715681)
+bones/13/rotation = Quaternion(0.001497042, 0.0017632925, 0.7055517, 0.7086547)
+bones/15/rotation = Quaternion(0.9934398, 0.08339908, 0.07445494, 0.024055235)
+bones/16/rotation = Quaternion(0.2297362, 6.5414746e-08, -1.5812927e-07, 0.97325295)
+bones/17/rotation = Quaternion(-0.535306, -0.2084537, 0.04886083, 0.8170724)
+bones/18/rotation = Quaternion(7.414288e-05, 0.9202241, -0.3913921, -1.672737e-05)
+bones/19/rotation = Quaternion(0.9966815, -0.029988373, 0.03127408, 0.06891089)
+bones/20/rotation = Quaternion(0.29937774, -6.350195e-08, 2.0805282e-07, 0.9541347)
+bones/21/rotation = Quaternion(-0.57252795, 0.11433631, -0.010744835, 0.8118027)
+bones/38/position = Vector3(0.52084064, 0.7816957, -0.057637352)
+bones/40/position = Vector3(-0.5108437, 0.78169566, 0.05973692)
 
 [node name="head" parent="Player/skeleton_mage/Rig/Skeleton3D" index="0" unique_id=1640695699]
-transform = Transform3D(0.99972045, -1.4014349e-09, 0.023646593, 1.3934147e-09, 0.9999998, 3.5568637e-10, -0.023646593, -3.2263736e-10, 0.99972045, -4.3038546e-09, 1.2263237, 1.5739471e-15)
+transform = Transform3D(0.99972045, -1.4014349e-09, 0.023646593, 1.3934147e-09, 0.9999998, 3.5568637e-10, -0.023646593, -3.2263736e-10, 0.99972045, -4.3038546e-09, 1.2250684, 1.5739471e-15)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=815539416]
 navigation_mesh = SubResource("NavigationMesh_a28oi")
@@ -217,8 +221,8 @@ mesh = SubResource("PlaneMesh_p4op5")
 script = ExtResource("7_ssnma")
 MIN_DISTANCE = 10.0
 MAX_DISTANCE = 50.0
-spawn_interval = 0.5
-type_change_value = 100
+spawn_interval = 1.0
+type_change_value = 5
 
 [node name="stuffy" type="Node3D" parent="." unique_id=387446285]
 
@@ -234,21 +238,26 @@ transform = Transform3D(10.252107, 0, 0, -1.1368684e-13, 0.91313946, 0, 0, 0, 11
 mesh = SubResource("BoxMesh_ssnma")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="stuffy" unique_id=920342180]
-transform = Transform3D(6.1, 0, 0, 0, 2.1, 0, 0, 0, -11.5, -15.5, 1.1, -12.1)
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, -15.5, 1.1, -12.1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stuffy/StaticBody3D2" unique_id=747914903]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.61557, 0.0093387365, -0.0027389526)
 shape = SubResource("BoxShape3D_ssnma")
+debug_color = Color(0.5461694, 0.5557334, 0.30347148, 0.41960785)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="stuffy/StaticBody3D2" unique_id=2128918383]
+transform = Transform3D(-13.26735, 1.4210855e-14, 0, 0, 2.1302671, 0, 0, 0, 25.14009, 3.6235237, 3.5762787e-07, 0)
 mesh = SubResource("BoxMesh_ssnma")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="stuffy" unique_id=1820659435]
-transform = Transform3D(16.47, 0, 0, 0, 4.2, 0, 0, 0, -19.550001, -15.5, 2.2, 14.699999)
+transform = Transform3D(-2.1, -1.8358783e-07, 0, 1.8358783e-07, -2.1, 0, 0, 0, 2.1, -15.5, 2.2, 14.699999)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stuffy/StaticBody3D3" unique_id=803458111]
-shape = SubResource("BoxShape3D_ssnma")
+transform = Transform3D(0.99999964, -6.5725203e-12, 0, 6.5725203e-12, 0.99999964, 0, 0, 0, 0.99999964, 1.7279048, 0.2755134, -1.8403316)
+shape = SubResource("BoxShape3D_wuglw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="stuffy/StaticBody3D3" unique_id=5243828]
+transform = Transform3D(6.392328, -9.947598e-14, 0, 5.1159077e-13, 1.4548932, 0, 0, 0, 5.991435, 1.7216496, 0.27201444, -1.8170395)
 mesh = SubResource("BoxMesh_ssnma")
 
 [editable path="Player"]

@@ -1,4 +1,4 @@
-class_name BaseEnemy extends CharacterBody3D
+class_name BaseEnemy extends RigidBody3D
 
 @export var enemy_type: EnemyType
 
@@ -6,13 +6,9 @@ var multimesh_index: int = -1
 var player: Node3D
 var is_dying: bool = false
 
-var is_climbing: bool = false
-var was_climbing: bool = false
-var nudge_cooldown: float = 0.0
-
 var inside_player: bool = false
 var hitbox_player: Area3D
-#@onready var attack_cooldown: Timer = $AttackCooldown
+
 
 var attack_cooldown = Timer.new()
 
@@ -38,37 +34,20 @@ func _physics_process(delta):
 	_move(delta)
 	_update_visual()
 
-func _move(delta):
-	_check_climb()
-	nudge_cooldown -= delta
+func _move(_delta):
+	if not player:
+		return
 	
-	velocity.x = 0
-	velocity.z = 0
-	
-	# gravity or climbing
-	if is_climbing:
-		velocity.y = enemy_type.speed * 1  # adjust climb speed
-	elif not is_on_floor():
-		velocity.y -= 9.8 * delta
 	
 	var dir = (player.global_position - global_position)
 	dir.y = 0
 	dir = dir.normalized()
 	
-	if was_climbing and not is_climbing and nudge_cooldown <= 0:
-		global_position += dir * 0.5
-		nudge_cooldown = 0.5
-	was_climbing = is_climbing
+	if _is_blocked(dir):
+		linear_velocity.y = enemy_type.speed * 1
 	
-	var motion = Vector3(dir.x * enemy_type.speed * delta, velocity.y * delta, dir.z * enemy_type.speed * delta)
-	var collision = move_and_collide(motion)
-	
-	if collision:
-		var collider = collision.get_collider()
-		if collider is Player:
-			collider.global_position += collision.get_remainder()
-	
-	move_and_slide()
+	linear_velocity.x = dir.x * enemy_type.speed
+	linear_velocity.z = dir.z * enemy_type.speed 
 
 #func _move(delta):
 	#
@@ -120,27 +99,20 @@ func _update_visual():
 		visual_transform.basis = Basis.looking_at(-dir_to_player.normalized(), Vector3.UP)
 	EnemyManager.update_enemy_transform(enemy_type.id, multimesh_index, visual_transform)
 
-func _check_climb() -> void:
+func _is_blocked(dir: Vector3) -> bool:
 	var space_state = get_world_3d().direct_space_state
-	var dir = (player.global_position - global_position)
-	dir.y = 0
-	dir = dir.normalized()
 	
-	var from = global_position + Vector3(0, 0.1, 0)
-	var to = from + dir * 2
-	
+	var from = global_position + dir * 0.5 + Vector3(0, 0.3, 0)
+	var to = from + dir * 1
 	var query = PhysicsRayQueryParameters3D.create(from, to)
 	query.exclude = [self]
 	query.collision_mask = 1
-	var result = space_state.intersect_ray(query)
-	if result:
-		is_climbing = true
-	else:
-		is_climbing = false
-	 
+	var query_hit = space_state.intersect_ray(query)
 	
-
-	
+	if query_hit:
+		#print("blocked by: ", query_hit.collider, " at height: ", query_hit.position.y, " enemy at: ", global_position.y)
+		return true
+	return false
 
 
 func get_aim_point() -> Vector3:

@@ -1,6 +1,6 @@
 extends Node3D
 
-const TOTAL_MAX_ENEMIES = 500
+const TOTAL_MAX_ENEMIES = 5000
 const ZOMBIE = preload("uid://3xavsmg2bv1t")
 const SKELETON = preload("uid://bchq6yfggxiy8")
 

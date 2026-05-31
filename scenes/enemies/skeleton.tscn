@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://clwu5coxdl2t0" path="res://scenes/Components/health_component.tscn" id="3_038oa"]
 [ext_resource type="PackedScene" uid="uid://b4ht8w7xtmbnn" path="res://scenes/Components/hitbox_component.tscn" id="4_3mw36"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_038oa"]
+friction = 4.95
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_038oa"]
 radius = 0.6
 height = 3.7728124
@@ -12,9 +15,15 @@ height = 3.7728124
 [sub_resource type="BoxShape3D" id="BoxShape3D_s0h66"]
 size = Vector3(2.1000001, 3.8, 1.9)
 
-[node name="skeleton" type="CharacterBody3D" unique_id=1921850707]
+[node name="skeleton" type="RigidBody3D" unique_id=417147958]
 collision_layer = 8
 collision_mask = 11
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_038oa")
+contact_monitor = true
+max_contacts_reported = 4
 script = ExtResource("1_3mw36")
 enemy_type = ExtResource("2_038oa")
 
