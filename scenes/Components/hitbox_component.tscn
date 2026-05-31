@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b4ht8w7xtmbnn"]
+
+[ext_resource type="Script" uid="uid://dujk6x78b6etd" path="res://scripts/Components/hitbox_component.gd" id="1_m3d0b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6lnc4"]
+
+[node name="HitboxComponent" type="Area3D" unique_id=1994066265]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_m3d0b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1027420234]
+shape = SubResource("BoxShape3D_6lnc4")

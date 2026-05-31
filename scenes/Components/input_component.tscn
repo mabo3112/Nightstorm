@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bi3ce1wmv8ryq"]
+
+[ext_resource type="Script" uid="uid://xxde5mu67s71" path="res://scripts/Components/input_component.gd" id="1_gm2hg"]
+
+[node name="InputComponent" type="Node" unique_id=699955669]
+script = ExtResource("1_gm2hg")

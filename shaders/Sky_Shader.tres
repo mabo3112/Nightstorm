@@ -1,0 +1,55 @@
+[gd_resource type="VisualShader" format=3 uid="uid://4m1vm534213d"]
+
+[ext_resource type="Texture2D" uid="uid://1gm7w2qnw6q3" path="res://assets/sky_background/green-nebula-with-stars-hdri_4K.exr" id="1_7jjcx"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_h5ulv"]
+parameter_name = "Sky_Color_Intensity"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_h5ulv"]
+expanded_output_ports = [0]
+texture = ExtResource("1_7jjcx")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_qspmy"]
+expanded_output_ports = [0]
+input_name = "sky_coords"
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_bttem"]
+function = 1
+
+[sub_resource type="VisualShaderNodeColorOp" id="VisualShaderNodeColorOp_0asam"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 0, 0)]
+expanded_output_ports = [0]
+operator = 4
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_e123o"]
+parameter_name = "Sky_Color"
+default_value_enabled = true
+default_value = Color(0.67, 0.040200002, 0.16616018, 1)
+
+[sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_o0hcb"]
+
+[sub_resource type="GDScript" id="GDScript_t60np"]
+
+[resource]
+mode = 3
+flags/use_half_res_pass = false
+flags/use_quarter_res_pass = false
+flags/disable_fog = false
+flags/use_debanding = false
+nodes/sky/0/position = Vector2(1300, 140)
+nodes/sky/4/node = SubResource("VisualShaderNodeTexture_h5ulv")
+nodes/sky/4/position = Vector2(440, 100)
+nodes/sky/5/node = SubResource("VisualShaderNodeInput_qspmy")
+nodes/sky/5/position = Vector2(-220, 120)
+nodes/sky/6/node = SubResource("VisualShaderNodeUVFunc_bttem")
+nodes/sky/6/position = Vector2(120, 140)
+nodes/sky/7/node = SubResource("VisualShaderNodeColorOp_0asam")
+nodes/sky/7/position = Vector2(1000, 300)
+nodes/sky/8/node = SubResource("VisualShaderNodeColorParameter_e123o")
+nodes/sky/8/position = Vector2(160, 360)
+nodes/sky/9/node = SubResource("VisualShaderNodeColorFunc_o0hcb")
+nodes/sky/9/position = Vector2(720, 240)
+nodes/sky/11/node = SubResource("VisualShaderNodeFloatParameter_h5ulv")
+nodes/sky/11/position = Vector2(160, 600)
+nodes/sky/connections = PackedInt32Array(6, 0, 4, 0, 5, 0, 6, 0, 9, 0, 7, 0, 8, 0, 7, 1, 4, 0, 0, 0)
+script = SubResource("GDScript_t60np")

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c1eyb3qyxhdwk"]
+
+[ext_resource type="Script" uid="uid://rw3dpcsnn4je" path="res://scripts/Components/interaction_component.gd" id="1_tgqsm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8b000"]
+size = Vector3(2.5, 3.1000001, 3.3)
+
+[node name="InteractionComponent" type="Area3D" unique_id=2089931580]
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_tgqsm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=281529163]
+shape = SubResource("BoxShape3D_8b000")
+
+[node name="PromptLabel" type="Label3D" parent="." unique_id=987963187]
+visible = false
+billboard = 1

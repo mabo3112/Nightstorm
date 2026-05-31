@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://bojqu2ee3ondh"]
+
+[ext_resource type="Script" uid="uid://bjux8gnf80ksj" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[sub_resource type="FontVariation" id="FontVariation_vue75"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l6cm7"]
+font = SubResource("FontVariation_vue75")
+font_size = 72
+font_color = Color(0.24384758, 0.47139388, 0.3728921, 1)
+shadow_size = 6
+shadow_color = Color(0.05882353, 0.15686275, 0.09019608, 0.9764706)
+shadow_offset = Vector2(5.74, 2.31)
+
+[node name="MainMenu" type="Control" unique_id=479598085]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="Header" type="Control" parent="." unique_id=1764422721]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Header" unique_id=927543098]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 719.0
+offset_right = 1161.0
+offset_bottom = 201.0
+grow_horizontal = 2
+text = "NIGHTSTORM
+"
+label_settings = SubResource("LabelSettings_l6cm7")
+
+[node name="Control" type="Control" parent="." unique_id=1154064811]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1340479311]
+layout_mode = 0
+offset_left = 28.0
+offset_top = -314.0
+offset_right = 420.0
+offset_bottom = 298.0
+theme_override_constants/separation = 100
+
+[node name="play" type="Button" parent="Control/VBoxContainer" unique_id=860303844]
+layout_mode = 2
+theme_override_font_sizes/font_size = 51
+text = "Play"
+flat = true
+
+[node name="settings" type="Button" parent="Control/VBoxContainer" unique_id=1883702484]
+layout_mode = 2
+theme_override_font_sizes/font_size = 51
+text = "Settings"
+flat = true
+
+[node name="cengiz" type="Button" parent="Control/VBoxContainer" unique_id=453089108]
+layout_mode = 2
+theme_override_font_sizes/font_size = 51
+text = "Cengiz stinkt"
+flat = true
+
+[node name="exit" type="Button" parent="Control/VBoxContainer" unique_id=1068115733]
+layout_mode = 2
+theme_override_font_sizes/font_size = 51
+text = "Exit"
+flat = true
+
+[connection signal="pressed" from="Control/VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/cengiz" to="." method="_on_cengiz_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://xchdxof4fno7"]
+
+[ext_resource type="Script" uid="uid://cqva2pxd2jhkm" path="res://scripts/Abilities/fireball.gd" id="1_0gqg1"]
+[ext_resource type="Shader" uid="uid://dqn2pyrckk44k" path="res://scenes/Abilities/fireball_shader.tres" id="2_6oha0"]
+[ext_resource type="ArrayMesh" uid="uid://dl74rs7uyfony" path="res://assets/abilities/fireball_mesh.obj" id="3_x6r2u"]
+[ext_resource type="Shader" uid="uid://rlf68ig4gfvn" path="res://scenes/Abilities/FireHeader_shader.tres" id="4_h2s14"]
+[ext_resource type="Texture2D" uid="uid://cli0b8un5axnu" path="res://assets/NoiseTextures/T_VFX_basic1.PNG" id="5_h4dp1"]
+[ext_resource type="Material" uid="uid://d2kdfw4142bo0" path="res://scenes/Abilities/m_fireTrail1.tres" id="6_svf7b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0gqg1"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ruvs0"]
+render_priority = 1
+shader = ExtResource("2_6oha0")
+shader_parameter/fire_color = Color(1.8984075, 1.2329415, 0.56639516, 1)
+shader_parameter/Speed = Vector2(0.2, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nsqvy"]
+render_priority = 0
+shader = ExtResource("4_h2s14")
+shader_parameter/Ball_Color = Color(1, 0.6117647, 0.14901961, 1)
+shader_parameter/Fresnel_Power = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_b7ucr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbh44"]
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("5_h4dp1")
+
+[sub_resource type="Curve" id="Curve_yfjr2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xrmya"]
+curve = SubResource("Curve_yfjr2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_walup"]
+particle_flag_align_y = true
+emission_shape = 2
+emission_sphere_radius = 0.5
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 3.0
+initial_velocity_max = 8.0
+radial_velocity_min = 0.99997765
+radial_velocity_max = 1.9999776
+gravity = Vector3(0, 0, 0)
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_xrmya")
+color = Color(1.2742168, 1.0558182, 0.69099766, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_f124w"]
+size = Vector2(0.1, 0.5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_x330x"]
+
+[node name="Fireball" type="Area3D" unique_id=488708611]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+script = ExtResource("1_0gqg1")
+despawn_time = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1876456712]
+transform = Transform3D(5.867999, 0, 0, 0, 5.867999, 0, 0, 0, 5.867999, 0.3, 0, 0)
+shape = SubResource("BoxShape3D_0gqg1")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1014423061]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 0, 0)
+
+[node name="FireballMesh" type="MeshInstance3D" parent="Node3D" unique_id=2020144249]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.09999998, 0, 0)
+material_override = SubResource("ShaderMaterial_ruvs0")
+cast_shadow = 0
+mesh = ExtResource("3_x6r2u")
+
+[node name="FirebalHeadBall" type="MeshInstance3D" parent="Node3D" unique_id=479863335]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.22999999, 0, 0)
+material_override = SubResource("ShaderMaterial_nsqvy")
+mesh = SubResource("SphereMesh_b7ucr")
+
+[node name="SmallSparks" type="GPUParticles3D" parent="Node3D" unique_id=2035405068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+material_override = SubResource("StandardMaterial3D_mbh44")
+amount = 10
+lifetime = 0.3
+explosiveness = 0.4
+process_material = SubResource("ParticleProcessMaterial_walup")
+draw_pass_1 = SubResource("QuadMesh_f124w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=249514912]
+transform = Transform3D(2.1243736e-07, 0, 0.99999994, 0, 1, 0, -1.6200001, 0, 1.3113416e-07, 0, 0, 0.90000004)
+material_override = ExtResource("6_svf7b")
+mesh = SubResource("QuadMesh_x330x")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1272484576]
+transform = Transform3D(-3.2307517e-14, 1, -4.3711385e-08, -2.1243737e-07, -4.371139e-08, -0.99999994, -1.6200001, 0, 1.3113417e-07, 0, 0, 0.90000004)
+material_override = ExtResource("6_svf7b")
+mesh = SubResource("QuadMesh_x330x")
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=1668311148]
+wait_time = 6.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

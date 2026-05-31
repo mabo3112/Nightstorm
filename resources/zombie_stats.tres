@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="StatsComponent" format=3 uid="uid://bvtk2vgghqn31"]
+
+[ext_resource type="Script" uid="uid://bcbgphajl2x4w" path="res://scripts/Components/stats_component.gd" id="1_3uk5s"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_3uk5s")
+metadata/_custom_type_script = "uid://bcbgphajl2x4w"

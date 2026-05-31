@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://s8jxhrg2wkty"]
+
+[ext_resource type="Shader" uid="uid://dpeonskeo3nmh" path="res://shaders/portal.tres" id="1_d4jfq"]
+[ext_resource type="Script" uid="uid://88u4c8qgbup3" path="res://scripts/portal.gd" id="1_dyed0"]
+[ext_resource type="Texture2D" uid="uid://cfd7svix5onwr" path="res://assets/portalStuff/T_VFX_lelu1_tiled.png" id="2_dyed0"]
+[ext_resource type="Texture2D" uid="uid://d3pj1b5mvvu8u" path="res://assets/portalStuff/T_VFX_Flare_16.PNG" id="3_ckw30"]
+[ext_resource type="PackedScene" uid="uid://c1eyb3qyxhdwk" path="res://scenes/Components/interaction_component.tscn" id="5_dyed0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d4jfq"]
+size = Vector3(3, 3.3, 0.6)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0ytf"]
+render_priority = 0
+shader = ExtResource("1_d4jfq")
+shader_parameter/Color_Intensity = 7.08
+shader_parameter/Portal_Color = Color(0.086104214, 0.29748532, 0.87455684, 1)
+shader_parameter/Speed_X_Y = Vector2(-0.3, 0.303)
+shader_parameter/Texture2DParameter = ExtResource("2_dyed0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_frqps"]
+size = Vector2(1, 1.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yude"]
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0, 0.3660025, 2.6034334, 1)
+albedo_texture = ExtResource("3_ckw30")
+use_particle_trails = true
+
+[sub_resource type="Curve" id="Curve_e5sgc"]
+_limits = [0.0, 0.01, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_11dha"]
+_limits = [2.9802322e-08, 0.8539326, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 2.9802322e-08), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_hay7w"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.020270273, 0.8764045), 0.0, 0.0, 0, 0, Vector2(0.9515419, 1.011236), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_33yj3"]
+curve_x = SubResource("Curve_e5sgc")
+curve_y = SubResource("Curve_11dha")
+curve_z = SubResource("Curve_hay7w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ybu0s"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 0.55
+emission_ring_inner_radius = 0.55
+emission_ring_cone_angle = 90.0
+orbit_velocity_min = 0.2000001
+orbit_velocity_max = 0.2000001
+orbit_velocity_curve = SubResource("CurveXYZTexture_33yj3")
+radial_velocity_min = 0.09997764
+radial_velocity_max = 0.19997764
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_h50eh"]
+size = 0.386
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dyed0"]
+size = Vector3(2.5, 3.1000001, 3.3)
+
+[node name="Portal" type="Area3D" unique_id=1120646712]
+script = ExtResource("1_dyed0")
+target_scene = "uid://dp0kqrbs0sfvn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1726918363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14999992, 0)
+visible = false
+shape = SubResource("BoxShape3D_d4jfq")
+
+[node name="VFX_Portal" type="Node3D" parent="." unique_id=565438190]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VFX_Portal" unique_id=1702381277]
+material_override = SubResource("ShaderMaterial_i0ytf")
+mesh = SubResource("QuadMesh_frqps")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="VFX_Portal" unique_id=1197603818]
+transform = Transform3D(0.80999994, 0, 0, 0, 1.0529999, 0, 0, 0, 0.80999994, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_5yude")
+amount = 150
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_ybu0s")
+draw_pass_1 = SubResource("RibbonTrailMesh_h50eh")
+
+[node name="InteractionComponent" parent="." unique_id=2089931580 instance=ExtResource("5_dyed0")]
+unique_name_in_owner = true
+collision_layer = 512
+prompt_message = "Press E to teleport"
+
+[node name="CollisionShape3D" parent="InteractionComponent" index="0" unique_id=281529163]
+shape = SubResource("BoxShape3D_dyed0")
+
+[node name="PromptLabel" parent="InteractionComponent" index="1" unique_id=987963187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+text = "asdasdadasdasdad"
+
+[editable path="InteractionComponent"]

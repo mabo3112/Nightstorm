@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dl634vonikmmp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oi2ix"]
+bg_color = Color(0.89165515, 0.1680183, 0.15594886, 1)
+
+[node name="Control" type="Control" unique_id=672097814]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=289942987]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 145.0
+offset_bottom = 27.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_oi2ix")

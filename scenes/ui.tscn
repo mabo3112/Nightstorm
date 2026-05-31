@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://dbn8r1bmivl6h"]
+
+[ext_resource type="Script" uid="uid://diijaxsw1lryg" path="res://scripts/ui.gd" id="1_nt7q6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nt7q6"]
+bg_color = Color(0.7028097, 0.09985284, 0, 1)
+
+[node name="UI" type="Control" unique_id=252420103]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_nt7q6")
+
+[node name="Labels" type="Control" parent="." unique_id=337577041]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Kills" type="Label" parent="Labels" unique_id=1838545584]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 23.0
+text = "Kills: 0"
+
+[node name="Crosshair" type="Control" parent="." unique_id=1344196812]
+modulate = Color(1, 1, 1, 0.24700001)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.25
+offset_top = -20.25
+offset_right = 20.25
+offset_bottom = 20.25
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Crosshair" unique_id=1906357185]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="." unique_id=1083270402]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_top = -40.0
+offset_right = 106.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="HealthBar" type="ProgressBar" parent="Control" unique_id=1235069478]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_nt7q6")
+max_value = 1000.0
+
+[node name="Control2" type="Control" parent="." unique_id=1907672326]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="FPS" type="Label" parent="Control2" unique_id=302419610]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -106.0
+offset_top = 4.0
+offset_right = -70.0
+offset_bottom = 27.0
+text = "FPS: "
+
+[node name="Gold" type="Label" parent="Control2" unique_id=824662699]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -107.0
+offset_top = 23.0
+offset_right = -62.0
+offset_bottom = 46.0
+text = "Gold: "
+
+[node name="EnemyCount" type="Label" parent="Control2" unique_id=1969023411]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -108.0
+offset_top = 41.0
+offset_right = 4.0
+offset_bottom = 64.0
+text = "Enemy Count: "

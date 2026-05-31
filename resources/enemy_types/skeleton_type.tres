@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyType" format=3 uid="uid://bchq6yfggxiy8"]
+
+[ext_resource type="ArrayMesh" uid="uid://dd6x0sp0rdys0" path="res://assets/meshs/skeleton.mesh" id="1_igsii"]
+[ext_resource type="Script" uid="uid://db6eyk8ybph18" path="res://scripts/enemy_type.gd" id="1_ntdte"]
+
+[resource]
+script = ExtResource("1_ntdte")
+id = "skeleton"
+mesh = ExtResource("1_igsii")
+attack_cooldown = 0.5
+max_count = 300
+speed = 4.0
+damage = 1.0
+metadata/_custom_type_script = "uid://db6eyk8ybph18"

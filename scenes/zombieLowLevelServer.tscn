@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ccuv6nrnsqjk2"]
+
+[ext_resource type="Script" uid="uid://ik50ev63tbdl" path="res://scripts/zombie_low_level_server.gd" id="1_0okqj"]
+
+[node name="ZombieLowLevelServer" type="Node3D" unique_id=206515678]
+script = ExtResource("1_0okqj")

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://ca1lq2ki71scg"]
+
+[ext_resource type="Script" uid="uid://c646231egt7ju" path="res://scripts/Enemies/zombie.gd" id="1_a0lpg"]
+[ext_resource type="PackedScene" uid="uid://dl634vonikmmp" path="res://scenes/Components/enemyUI_component.tscn" id="2_bgxja"]
+[ext_resource type="Resource" uid="uid://3xavsmg2bv1t" path="res://resources/enemy_types/zombie_type.tres" id="2_irn3l"]
+[ext_resource type="PackedScene" uid="uid://clwu5coxdl2t0" path="res://scenes/Components/health_component.tscn" id="3_irn3l"]
+[ext_resource type="PackedScene" uid="uid://b4ht8w7xtmbnn" path="res://scenes/Components/hitbox_component.tscn" id="4_p4ex4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ycv6i"]
+radius = 0.6
+height = 3.7375002
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pjjxt"]
+viewport_path = NodePath("HealthUI/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pjjxt"]
+size = Vector3(1.7, 3.9, 1.7)
+
+[node name="Zombie" type="CharacterBody3D" unique_id=242353461]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_a0lpg")
+enemy_type = ExtResource("2_irn3l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1267507460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009999983, 1.8875003, -0.020000042)
+shape = SubResource("CapsuleShape3D_ycv6i")
+
+[node name="HealthUI" type="Node3D" parent="." unique_id=1258893127]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -0.3)
+
+[node name="SubViewport" type="SubViewport" parent="HealthUI" unique_id=364344342]
+unique_name_in_owner = true
+transparent_bg = true
+size = Vector2i(145, 27)
+
+[node name="Control" parent="HealthUI/SubViewport" unique_id=672097814 instance=ExtResource("2_bgxja")]
+unique_name_in_owner = true
+
+[node name="HealthBar" parent="HealthUI/SubViewport/Control" index="0" unique_id=289942987]
+process_mode = 4
+value = 100.0
+
+[node name="Sprite3D" type="Sprite3D" parent="HealthUI" unique_id=1279657693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8999999, 0.3)
+billboard = 1
+texture = SubResource("ViewportTexture_pjjxt")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=893178003]
+unique_name_in_owner = true
+path_desired_distance = 2.0
+target_desired_distance = 0.3
+simplify_path = true
+
+[node name="HealthComponent" parent="." unique_id=522831229 instance=ExtResource("3_irn3l")]
+unique_name_in_owner = true
+
+[node name="HitboxComponent" parent="." unique_id=1994066265 instance=ExtResource("4_p4ex4")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04, 0, -0.120000005)
+collision_mask = 4
+
+[node name="CollisionShape3D" parent="HitboxComponent" index="0" unique_id=1027420234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_pjjxt")
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=94786621]
+wait_time = 0.5
+
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
+[connection signal="area_exited" from="HitboxComponent" to="." method="_on_hitbox_component_area_exited"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+
+[editable path="HealthUI/SubViewport/Control"]
+[editable path="HitboxComponent"]

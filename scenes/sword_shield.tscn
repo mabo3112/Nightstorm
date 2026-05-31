@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cla07j0c7sld7"]
+
+[ext_resource type="PackedScene" uid="uid://dwdwyr8lwbxqg" path="res://assets/dungeon_assets/props/sword_shield.glb" id="1_t33fi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vysoa"]
+size = Vector3(2.2, 1.7, 0.4)
+
+[node name="SwordShield" type="StaticBody3D" unique_id=111991824]
+
+[node name="sword_shield" parent="." unique_id=1039689022 instance=ExtResource("1_t33fi")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1554547005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, 0.049999982, 0.09999998)
+shape = SubResource("BoxShape3D_vysoa")

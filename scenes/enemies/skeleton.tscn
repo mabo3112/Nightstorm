@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bc40w5u1yyk31"]
+
+[ext_resource type="Script" uid="uid://cdi6p053dhitd" path="res://scripts/Enemies/skeleton.gd" id="1_3mw36"]
+[ext_resource type="Resource" uid="uid://bchq6yfggxiy8" path="res://resources/enemy_types/skeleton_type.tres" id="2_038oa"]
+[ext_resource type="PackedScene" uid="uid://clwu5coxdl2t0" path="res://scenes/Components/health_component.tscn" id="3_038oa"]
+[ext_resource type="PackedScene" uid="uid://b4ht8w7xtmbnn" path="res://scenes/Components/hitbox_component.tscn" id="4_3mw36"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_038oa"]
+radius = 0.6
+height = 3.7728124
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s0h66"]
+size = Vector3(2.1000001, 3.8, 1.9)
+
+[node name="skeleton" type="CharacterBody3D" unique_id=1921850707]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_3mw36")
+enemy_type = ExtResource("2_038oa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1829005441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4901161e-08, 1.8929689, 0.100000024)
+shape = SubResource("CapsuleShape3D_038oa")
+
+[node name="HealthComponent" parent="." unique_id=522831229 instance=ExtResource("3_038oa")]
+
+[node name="HitboxComponent" parent="." unique_id=1994066265 instance=ExtResource("4_3mw36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35000002, 0, -0.65000004)
+collision_mask = 4
+
+[node name="CollisionShape3D" parent="HitboxComponent" index="0" unique_id=1027420234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.9, 0.75)
+shape = SubResource("BoxShape3D_s0h66")
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=405742867]
+wait_time = 0.5
+
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
+[connection signal="area_exited" from="HitboxComponent" to="." method="_on_hitbox_component_area_exited"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+
+[editable path="HitboxComponent"]

@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d2kdfw4142bo0"]
+
+[ext_resource type="Shader" uid="uid://bhjnlgsov5c3q" path="res://scenes/Abilities/Trail_shader.tres" id="1_rcxfu"]
+
+[sub_resource type="Gradient" id="Gradient_03oqu"]
+offsets = PackedFloat32Array(0.04054054, 0.41353384, 0.91698843, 1)
+colors = PackedColorArray(0.972549, 0, 0, 0, 0.972549, 0, 0, 1, 1.3593522, 1.4369954, 0, 1, 1.3593522, 1.4369954, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nubqo"]
+gradient = SubResource("Gradient_03oqu")
+use_hdr = true
+
+[resource]
+render_priority = -1
+shader = ExtResource("1_rcxfu")
+shader_parameter/Color_Texture = SubResource("GradientTexture1D_nubqo")
+shader_parameter/Scale = Vector2(1, 1)
+shader_parameter/Trail_Speed = Vector2(-1.5, 0)

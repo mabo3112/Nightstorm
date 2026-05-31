@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyType" format=3 uid="uid://3xavsmg2bv1t"]
+
+[ext_resource type="Script" uid="uid://db6eyk8ybph18" path="res://scripts/enemy_type.gd" id="1_bt288"]
+[ext_resource type="ArrayMesh" uid="uid://0umfr34n4wrw" path="res://assets/meshs/zombie.mesh" id="1_vb2wm"]
+
+[resource]
+script = ExtResource("1_bt288")
+id = "zombie"
+mesh = ExtResource("1_vb2wm")
+attack_cooldown = 0.5
+max_count = 300
+speed = 3.0
+damage = 10.0
+metadata/_custom_type_script = "uid://db6eyk8ybph18"
