@@ -5,7 +5,7 @@ class_name MovementComponent extends Node
 @export var speed := 8.0
 @export var jump_velocity := 12.0
 @export var gravity_multiplier := 3.0
-@export var fly_speed := 15.0
+@export var fly_speed := 150.0
 var freefly := false 
 var direction: Vector2 = Vector2.ZERO
 var wants_jump := false

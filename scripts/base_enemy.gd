@@ -4,7 +4,6 @@ class_name BaseEnemy extends RigidBody3D
 
 var multimesh_index: int = -1
 var player: Node3D
-var is_dying: bool = false
 
 var inside_player: bool = false
 var hitbox_player: Area3D
@@ -151,8 +150,7 @@ func _on_hitbox_component_area_exited(area: Area3D) -> void:
 	inside_player = false
 
 func die():
-	if is_dying:
+	if is_queued_for_deletion():
 		return
-	is_dying = true
 	EnemyManager.unregister_enemy(enemy_type.id, multimesh_index)
 	queue_free()

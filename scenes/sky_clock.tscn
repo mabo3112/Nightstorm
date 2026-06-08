@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://qneequt5wfr6"]
+
+[ext_resource type="Texture2D" uid="uid://bqclect2f0lqp" path="res://assets/clock/clock-face.png" id="1_1a823"]
+[ext_resource type="Script" uid="uid://ba7btnr6hwjmp" path="res://scripts/sky_clock.gd" id="1_q0xcf"]
+[ext_resource type="Shader" uid="uid://b6c486dbcwc05" path="res://shaders/clock_progress_overlay.gdshader" id="3_8ica1"]
+[ext_resource type="Texture2D" uid="uid://chopmp8ndqcbj" path="res://assets/clock/hand-3-sun-arrow.png" id="3_rcsf4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0xcf"]
+transparency = 1
+albedo_texture = ExtResource("1_1a823")
+emission_enabled = true
+emission = Color(0.6468404, 0.59579134, 0.27542394, 1)
+emission_energy_multiplier = 2.4
+emission_texture = ExtResource("1_1a823")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8ica1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1a823"]
+emission_enabled = true
+emission = Color(0.9289989, 0.86306006, 0.66224706, 1)
+emission_energy_multiplier = 1.29
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rcsf4"]
+size = Vector2(0.14, 0.7)
+center_offset = Vector3(0, 0, 0.35)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brdxs"]
+transparency = 1
+albedo_texture = ExtResource("3_rcsf4")
+emission_enabled = true
+emission_energy_multiplier = 5.45
+emission_texture = ExtResource("3_rcsf4")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_brdxs"]
+lightmap_size_hint = Vector2i(12, 12)
+center_offset = Vector3(0, 0, 0.395)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ica1"]
+render_priority = 0
+shader = ExtResource("3_8ica1")
+shader_parameter/progress = 0.2
+shader_parameter/overlay_color = Color(0.18039216, 0.12156863, 0.023529412, 0.73333335)
+shader_parameter/radius = 0.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_rcsf4"]
+size = Vector2(1.5, 1.5)
+orientation = 1
+
+[node name="SkyClock" type="Node3D" unique_id=1703261937]
+script = ExtResource("1_q0xcf")
+
+[node name="Clock" type="MeshInstance3D" parent="." unique_id=1551858410]
+transform = Transform3D(1350, 0, 0, 0, -1350, 0.00020384433, 0, -0.00020384433, -1350, 0, 8000, 0)
+material_override = SubResource("StandardMaterial3D_q0xcf")
+mesh = SubResource("PlaneMesh_8ica1")
+
+[node name="HourHand" type="Node3D" parent="Clock" unique_id=443818893]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Clock/HourHand" unique_id=1959420448]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_1a823")
+mesh = SubResource("PlaneMesh_rcsf4")
+
+[node name="MinuteHand" type="Node3D" parent="Clock" unique_id=593179377]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Clock/MinuteHand" unique_id=314933040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.38944444)
+material_override = SubResource("StandardMaterial3D_brdxs")
+mesh = SubResource("PlaneMesh_brdxs")
+
+[node name="ProgressOverlay" type="MeshInstance3D" parent="Clock" unique_id=1771847808]
+unique_name_in_owner = true
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, -0.01999998, 0)
+material_override = SubResource("ShaderMaterial_8ica1")
+mesh = SubResource("QuadMesh_rcsf4")

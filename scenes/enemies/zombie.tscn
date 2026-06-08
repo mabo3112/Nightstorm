@@ -7,13 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://b4ht8w7xtmbnn" path="res://scenes/Components/hitbox_component.tscn" id="4_p4ex4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bgxja"]
-friction = 0.09
+friction = 0.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ycv6i"]
 radius = 0.6
 height = 3.7375002
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_pjjxt"]
+viewport_path = NodePath("HealthUI/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pjjxt"]
 size = Vector3(1.7, 3.9, 1.7)
@@ -35,7 +36,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009999983, 1.8875003, -0.0
 shape = SubResource("CapsuleShape3D_ycv6i")
 
 [node name="HealthUI" type="Node3D" parent="." unique_id=1258893127]
-process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -0.3)
 
 [node name="SubViewport" type="SubViewport" parent="HealthUI" unique_id=364344342]

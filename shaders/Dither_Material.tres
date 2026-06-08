@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cr3mr4ab523uf"]
+
+[ext_resource type="Shader" uid="uid://itx0buqfj56b" path="res://shaders/Transparency_Dither_shader.tres" id="1_7d5sn"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7d5sn")
+shader_parameter/color = Color(1, 1, 1, 0.5)

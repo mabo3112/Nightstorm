@@ -87,27 +87,27 @@ size = Vector3(83.35132, 1, 104.1875)
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -7.1000004, 0.7, 6.9000053)
 
 [node name="Skeleton3D" parent="Player/skeleton_mage/Rig" parent_id_path=PackedInt32Array(1529040753, 1260624539, 640963311) index="0" unique_id=278001073]
-bones/1/position = Vector3(0, 0.37908217, 0)
-bones/4/rotation = Quaternion(-0.5554883, -0.05785467, -0.638638, 0.5293649)
-bones/5/rotation = Quaternion(2.518849e-08, -5.4942245e-08, -0.5103724, 0.8599536)
-bones/7/rotation = Quaternion(-0.3218124, -0.3333624, 0.1497567, 0.8734296)
-bones/8/rotation = Quaternion(0.00045323017, 0.00045321748, -0.70544136, 0.7087681)
-bones/9/rotation = Quaternion(-0.6138655, 0.07810035, 0.61378443, 0.49024305)
-bones/10/rotation = Quaternion(1.3917949e-08, 6.1290585e-08, 0.5329602, 0.84614044)
-bones/12/rotation = Quaternion(-0.3205327, 0.3093159, -0.23174952, 0.86479753)
-bones/13/rotation = Quaternion(0.0014555013, 0.0017143632, 0.705595, 0.70861185)
-bones/15/rotation = Quaternion(0.9917034, 0.083168365, 0.07699643, 0.0606541)
-bones/16/rotation = Quaternion(0.32539502, 5.9570933e-08, -2.2518753e-07, 0.94557816)
-bones/17/rotation = Quaternion(-0.5850624, -0.20463663, 0.06439179, 0.78209955)
-bones/18/rotation = Quaternion(1.7089676e-05, 0.9201728, -0.39151242, -3.8222774e-06)
-bones/19/rotation = Quaternion(0.99408203, -0.03178207, 0.030463472, 0.099311516)
-bones/20/rotation = Quaternion(0.37778044, -6.091675e-08, 2.6403822e-07, 0.9258953)
-bones/21/rotation = Quaternion(-0.61439484, 0.11349605, -0.017603643, 0.78059447)
-bones/38/position = Vector3(0.52084064, 0.7819001, -0.057637352)
-bones/40/position = Vector3(-0.5108437, 0.7819, 0.05973692)
+bones/1/position = Vector3(0, 0.369818, 0)
+bones/4/rotation = Quaternion(-0.55041534, -0.058356665, -0.64533645, 0.5264774)
+bones/5/rotation = Quaternion(2.5749223e-08, -4.7728186e-08, -0.50244397, 0.86460984)
+bones/7/rotation = Quaternion(-0.31917846, -0.33684945, 0.14387216, 0.8740471)
+bones/8/rotation = Quaternion(0.0014218184, 0.0014218088, -0.70186746, 0.7123047)
+bones/9/rotation = Quaternion(-0.6094546, 0.07881095, 0.6199825, 0.4878276)
+bones/10/rotation = Quaternion(2.9692659e-08, 5.4506838e-08, 0.52532387, 0.85090244)
+bones/12/rotation = Quaternion(-0.3182246, 0.31225708, -0.22591673, 0.8661353)
+bones/13/rotation = Quaternion(0.004275848, 0.005036321, 0.7026458, 0.7115092)
+bones/15/rotation = Quaternion(0.98969996, 0.08368656, 0.07865263, 0.08546576)
+bones/16/rotation = Quaternion(0.3908091, 5.9235497e-08, -2.6515627e-07, 0.9204718)
+bones/17/rotation = Quaternion(-0.61929435, -0.20108646, 0.07597091, 0.75516045)
+bones/18/rotation = Quaternion(-2.243216e-06, 0.92015594, -0.39155215, 5.9089115e-07)
+bones/19/rotation = Quaternion(0.9915801, -0.03327613, 0.029841151, 0.121536374)
+bones/20/rotation = Quaternion(0.43536162, -5.8496433e-08, 3.0294075e-07, 0.9002558)
+bones/21/rotation = Quaternion(-0.6454528, 0.11254363, -0.0230009, 0.755113)
+bones/38/position = Vector3(0.52084064, 0.7692917, -0.057637356)
+bones/40/position = Vector3(-0.5108437, 0.76929164, 0.059736915)
 
 [node name="head" parent="Player/skeleton_mage/Rig/Skeleton3D" index="0" unique_id=1640695699]
-transform = Transform3D(0.99972045, -1.4014349e-09, 0.023646593, 1.3934147e-09, 0.9999998, 3.5568637e-10, -0.023646593, -3.2263736e-10, 0.99972045, -4.3038546e-09, 1.2148442, 1.5739471e-15)
+transform = Transform3D(0.99972045, -1.4014349e-09, 0.023646593, 1.3934147e-09, 0.9999998, 3.5568637e-10, -0.023646593, -3.2263736e-10, 0.99972045, -4.3038546e-09, 1.20558, 1.5739471e-15)
 
 [node name="PlayerCamera" parent="Player/CameraPivot/SpringArm3D" parent_id_path=PackedInt32Array(1529040753, 1073356005) index="0" unique_id=33631816]
 transform = Transform3D(1, 0, -1.4210855e-14, -3.5527137e-15, 1.0000001, 2.9802322e-08, 0, 8.0209166e-16, 1.0000001, 0, 0, 0)
@@ -832,6 +832,9 @@ transform = Transform3D(2.695, 0, 0, 0, 2.695, 0, 0, 0, 2.695, 3.9, 2.7000003, 1
 
 [node name="Portal" parent="." unique_id=1120646712 instance=ExtResource("35_0rl1p")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.100001, 2.6000001, 7.4)
+
+[node name="CollisionShape3D" parent="Portal/InteractionComponent" parent_id_path=PackedInt32Array(1120646712, 2089931580) index="0" unique_id=281529163]
+transform = Transform3D(0.98541516, 0, 0, 0, 0.98541516, 0, 0, 0, 0.98541516, 0, 0, 0)
 
 [editable path="UI"]
 [editable path="Player"]

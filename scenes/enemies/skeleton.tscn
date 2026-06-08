@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b4ht8w7xtmbnn" path="res://scenes/Components/hitbox_component.tscn" id="4_3mw36"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_038oa"]
-friction = 4.95
+friction = 0.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_038oa"]
 radius = 0.6

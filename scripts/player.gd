@@ -3,7 +3,8 @@ class_name Player extends CharacterBody3D
 @export_group("Camera")
 @export_range(0.1, 2.0) var mouse_sensitivity := 0.25
 @export var look_speed : float = 0.002
-
+@export_group("")
+@export var dither_material: ShaderMaterial
 # Components
 @onready var input_component: InputComponent = %InputComponent
 @onready var movement_component: MovementComponent = %MovementComponent
@@ -37,7 +38,7 @@ func _ready() -> void:
 	spring_arm_3d.add_excluded_object(self.get_rid())
 	animation_tree.active = true
 	add_to_group("player")
-	
+	#_apply_dither_to_node($skeleton_mage)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -53,6 +54,20 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Look around
 	if mouse_captured and event is InputEventMouseMotion:
 		rotate_look(event.screen_relative)
+
+func _process(delta: float) -> void:
+	var look_dir = -camera_pivot.global_transform.basis.z
+	var down_dot = look_dir.dot(Vector3.DOWN)
+	
+	var alpha = smoothstep(0.75, 1.0, down_dot)
+	
+	_set_transparency($skeleton_mage, alpha)
+	
+	#var color = dither_material.get_shader_parameter("color")
+	#color.a = alpha 
+	#dither_material.set_shader_parameter("color", color)
+	#
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -84,6 +99,19 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("interact"):
 		activate()
 		
+		
+func _apply_dither_to_node(node: Node) -> void:
+	if node is MeshInstance3D:
+		node.material_overlay = dither_material
+	for child in node.get_children():
+		_apply_dither_to_node(child)
+		
+func _set_transparency(node: Node, value: float) -> void:
+	if node is MeshInstance3D:
+		node.transparency = value
+	for child in node.get_children():
+		_set_transparency(child, value)
+
 func rotate_look(rot_input : Vector2):
 	look_rotation.x -= rot_input.y * look_speed
 	look_rotation.x = clamp(look_rotation.x, deg_to_rad(-55), deg_to_rad(80))
